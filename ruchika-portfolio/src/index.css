@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-void text-ink-primary font-body antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(139, 92, 246, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(34, 211, 238, 0.08), transparent);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090c14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2740;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3452;
+}
+
+/* Reusable component classes */
+@layer components {
+  .glass {
+    @apply bg-void-surface/60 backdrop-blur-xl border border-white/[0.06];
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-cyan-signal/30 shadow-glow;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-cyan-signal/80;
+  }
+
+  .section-heading {
+    @apply font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-ink-primary;
+  }
+
+  .section-padding {
+    @apply px-6 sm:px-10 lg:px-20 py-24 md:py-32;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-signal text-void font-semibold
+      transition-all duration-300 hover:shadow-glow hover:-translate-y-0.5 focus-visible:outline
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-signal;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-ink-primary
+      font-medium transition-all duration-300 hover:border-cyan-signal/50 hover:bg-white/5 hover:-translate-y-0.5
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-signal;
+  }
+
+  .tech-badge {
+    @apply font-mono text-xs px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-ink-muted;
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+}
