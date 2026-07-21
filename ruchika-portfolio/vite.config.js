@@ -8,7 +8,7 @@ import react from '@vitejs/plugin-react'
 // set `base` to '/'
 export default defineConfig({
   plugins: [react()],
-  base: '/portfolio/', // <-- CHANGE THIS to match your GitHub repo name
+  base: '/My_portofolio/', 
   build: {
     outDir: 'dist',
     sourcemap: false,
